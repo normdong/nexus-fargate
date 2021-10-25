@@ -47,7 +47,8 @@ export class NexusFargateStack extends cdk.Stack {
       securityGroup: efsSg,
       vpcSubnets: {
         subnets: vpc.selectSubnets({subnetGroupName: 'persistent'}).subnets
-      }
+      },
+      removalPolicy: cdk.RemovalPolicy.DESTROY
     });
 
     // Map Nexus user (uid 200) to root (uid 0), so that Nexus can write to EFS
